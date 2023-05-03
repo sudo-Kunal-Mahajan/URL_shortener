@@ -19,9 +19,29 @@
     <button type="submit" class="btn btn-lg btn-success col-xs-12 col-md-3">Submit</button>
   </div>        
 </form>
-<div class="row ">
-  
+
+{% if all_mappings|length >1 %}
+<div class="card mt-5">
+  <div class="card-header">
+   Latest Shortened URLs (max 10)
+  </div>
+  <div class="card-body">
+    {% for mapping in all_mappings %}
+    <div class="row">
+      <div class="col-xs-12 col-md-5">
+        <a class="text-decoration-none" target="_blank" href="{{mapping['full_url']}}">{{mapping['full_url']}} </a>
+      </div>
+      <div class="col-xs-12 col-md-4">
+        <a class="text-decoration-none"  target="_blank" href="{{base_url}}{{mapping['shorten_url']}}">{{base_url}}{{mapping['shorten_url']}}</a>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        {{mapping['created_at'].strftime('%Y-%m-%d') }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 </div>
+{% endif %}
 
   
 {% endblock %}

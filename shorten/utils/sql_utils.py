@@ -3,7 +3,7 @@ from shorten.web.models import db
 import shorten.utils.code_utils as utls
 
 def get_all_url_mappings():
-    return Shorten_urls.query.all()
+    return Shorten_urls.query.order_by(Shorten_urls.created_at.desc()).limit(10).all()
 
 def get_shortened_url(url):
     shortened = Shorten_urls.query.filter_by(full_url=url).first()
