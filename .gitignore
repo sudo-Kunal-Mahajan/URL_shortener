@@ -1,0 +1,4 @@
+instance/app_configs.py
+instance/db.sqlite
+shorten/__pycache__/*
+shorten/web/__pycache__/*
